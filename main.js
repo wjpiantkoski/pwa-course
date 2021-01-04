@@ -1,7 +1,7 @@
 // progressive enhancement (sw supported)
 if (navigator.serviceWorker) {
   // register the sw
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker.register('/sw.js', { scope: '/posts/' })
     .then(function (registration) {
       console.log('sw registered')
     })
@@ -9,8 +9,3 @@ if (navigator.serviceWorker) {
       console.error(err)
     })
 }
-
-// Get camera feed
-fetch('camera_feed.html').then(res => res.text()).then(html => {
-  document.getElementById('camera').innerHTML = html
-})
